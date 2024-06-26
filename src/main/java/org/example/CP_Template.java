@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.Arrays;
 import java.util.Scanner;
 import java.util.Timer;
 
@@ -49,12 +50,14 @@ public class CP_Template {
 
         while (t-- > 0){
 
+            String a = "sd";
+
+
         }
 
     }
 
     public static void solve(Scanner sc){
-
 
 
     }
