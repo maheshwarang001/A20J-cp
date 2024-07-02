@@ -36,24 +36,29 @@ public class CP_Template {
         return (ans)  % MOD;
     }
 
+    public static long lcm(long a, long b){
+        return Math.abs((a*b))/gcd(a,b);
+    }
+    public static long gcd(long a , long b){
+        while(b != 0){
+            long temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+    }
+
 
     public static void main(String[] args) {
 
         Scanner sc =  new Scanner(System.in);
-        solveT(sc);
+        int t = sc.nextInt();
+
+        while(t-- > 0) solveT(sc);
 
 
     }
     public static void solveT(Scanner sc){
-
-        int t = sc.nextInt();
-
-        while (t-- > 0){
-
-            String a = "sd";
-
-
-        }
 
     }
 
