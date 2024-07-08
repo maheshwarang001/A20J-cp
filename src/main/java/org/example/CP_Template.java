@@ -48,6 +48,12 @@ public class CP_Template {
         return a;
     }
 
+    public static void swapDigit(int a, int b, int[] nums){
+        nums[a] = nums[a]^nums[b];
+        nums[b] = nums[a]^nums[b];
+        nums[a] = nums[a]^nums[b];
+    }
+
 
     public static void main(String[] args) {
 
@@ -55,6 +61,8 @@ public class CP_Template {
         int t = sc.nextInt();
 
         while(t-- > 0) solveT(sc);
+        sc.close();
+
 
 
     }
