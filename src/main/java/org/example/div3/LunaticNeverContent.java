@@ -1,14 +1,15 @@
-package org.example;
+package org.example.div3;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.util.Arrays;
-import java.util.Scanner;
-import java.util.Timer;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.StringTokenizer;
 
-public class CP_Template {
+public class LunaticNeverContent {
+
     static long binaryExpRecur(long base, long exponential) {
         final long MOD = 1000000000;
 
@@ -64,7 +65,9 @@ public class CP_Template {
 
     static BufferedReader br;
     static PrintWriter pw;
-    public static void main(String[] args) throws IOException {
+
+    static StringTokenizer st;
+    public static void main(String[] args) throws Exception {
 
         br = new BufferedReader( new InputStreamReader(System.in));
         pw = new PrintWriter(System.out);
@@ -76,6 +79,34 @@ public class CP_Template {
         pw.close();
 
     }
-    public static void solve(){
+    public static void solve() throws Exception{
+
+        int n = Integer.parseInt(br.readLine().trim());
+
+        st = new StringTokenizer(br.readLine().trim());
+
+        long[] nums = new long[n];
+        for(int i = 0 ; i  < n ; i++) nums[i] = Long.parseLong(st.nextToken());
+
+
+        List<Long> list = new ArrayList<>();
+
+        int i = 0;
+        int j = nums.length-1;
+
+        while(i <= j ){
+
+            list.add(Math.abs(nums[i]-nums[j]));
+            i++;
+            j--;
+        }
+
+        long gcd = 0;
+
+        for(i = 0 ; i  < list.size() ; i++){
+            gcd = gcd(gcd,list.get(i));
+        }
+        pw.println(gcd);
+
     }
 }

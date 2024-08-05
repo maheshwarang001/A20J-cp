@@ -1,14 +1,13 @@
-package org.example;
+package org.example.div3;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.util.Arrays;
-import java.util.Scanner;
-import java.util.Timer;
+import java.util.*;
 
-public class CP_Template {
+public class FinalBoss {
+
     static long binaryExpRecur(long base, long exponential) {
         final long MOD = 1000000000;
 
@@ -64,7 +63,8 @@ public class CP_Template {
 
     static BufferedReader br;
     static PrintWriter pw;
-    public static void main(String[] args) throws IOException {
+    static StringTokenizer st;
+    public static void main(String[] args) throws Exception {
 
         br = new BufferedReader( new InputStreamReader(System.in));
         pw = new PrintWriter(System.out);
@@ -76,6 +76,39 @@ public class CP_Template {
         pw.close();
 
     }
-    public static void solve(){
+    public static void solve() throws Exception {
+        st = new StringTokenizer(br.readLine().trim());
+        int h = Integer.parseInt(st.nextToken());
+        int n = Integer.parseInt(st.nextToken());
+
+        long[] attack = new long[n];
+        long[] times = new long[n];
+
+        st = new StringTokenizer(br.readLine().trim());
+        for (int i = 0; i < n; i++) {
+            attack[i] = Long.parseLong(st.nextToken());
+        }
+
+        st = new StringTokenizer(br.readLine().trim());
+        for (int i = 0; i < n; i++) {
+            times[i] = Long.parseLong(st.nextToken());
+        }
+
+        PriorityQueue<long[]> pq = new PriorityQueue<>((a, b) -> Long.compare(a[0], b[0]));
+
+        for (int i = 0; i < n; i++) {
+            pq.add(new long[]{1, i});
+        }
+
+        long lastTurn = 1;
+
+        while (h > 0) {
+            long[] pair = pq.poll();
+            lastTurn = pair[0];
+            h -= attack[(int)pair[1]];
+            pq.offer(new long[]{(pair[0] + times[(int) pair[1]]), (int) pair[1]});
+        }
+
+        pw.println(lastTurn);
     }
 }
